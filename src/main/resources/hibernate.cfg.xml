@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="dialect">mainPart.dialect.SQLite.SQLiteDialect</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:W:\\BUCHALTER\\telegrambot\\src\\main\\resources\\sqLite\\telegramGame.db\\RussianQuiz.db</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <property name="hibernate.connection.release_mode">auto</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="hibernate.connection.autoReconnect">true</property>
+
+        <mapping class="mainPart.model.UserSession"/>
+        <mapping class="mainPart.model.QuestionAndAnswer"/>
+    </session-factory>
+</hibernate-configuration>
