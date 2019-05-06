@@ -1,0 +1,73 @@
+﻿create table sessions
+(
+  id        INTEGER(20)
+    primary key,
+  startTime VARCHAR(50),
+  question  VARCHAR(50),
+  answer    VARCHAR(50)
+);
+
+create table user_score
+(
+  id       INTEGER
+    primary key,
+  userName VARCHAR(50),
+  score    INTEGER(10)
+);
+
+create table balloffate
+(
+  id       int
+    constraint balloffate_pk
+      primary key,
+  question int,
+  answer   int,
+  user_id  int
+    references user_score,
+  time     int
+);
+
+create table note
+(
+  id          int
+    constraint note_pk
+      primary key,
+  description int,
+  date        int,
+  user_id     int
+    references user_score
+);
+
+create table questions
+(
+  id       INTEGER
+    primary key
+    references user_score
+    references sessions
+    references sessions,
+  question VARCHAR(50),
+  answer   VARCHAR(50)
+);
+
+create table weather
+(
+  id          int
+    constraint weather_pk
+      primary key,
+  user_id     int
+    references user_score,
+  city        int,
+  temperature int,
+  time        int
+);
+
+
+	
+	
+INSERT INTO questions (question, answer) VALUES ('В каком году началась Первая мировая война?', '1914');
+INSERT INTO questions (question, answer) VALUES ('Кто был первым императором Российской империи?', 'Петр Первый, Петр 1, Петр');
+INSERT INTO questions (question, answer) VALUES ('В каком городе родился Сократ?', 'Афины');
+INSERT INTO questions (question, answer) VALUES ('Столица Чехии?', 'Прага');	
+
+
+	
